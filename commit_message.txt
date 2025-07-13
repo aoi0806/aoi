@@ -1,1 +1,1 @@
-Fix image paths in sub-page script.js
+Confirm image file naming is correct and push
