@@ -1,1 +1,1 @@
-Confirm image file naming is correct and push
+Remove footer link to sub-page from main page
