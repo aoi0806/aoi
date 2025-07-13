@@ -1,1 +1,1 @@
-Add a sub-page with a right-answer-only version
+Fix image file naming and update log
