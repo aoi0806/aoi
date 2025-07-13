@@ -1,19 +1,19 @@
 const stageCounter = document.getElementById('stage-counter');
-const choice1 = document.getElementById('image1');
-const choice2 = document.getElementById('image2');
+const image1 = document.getElementById('image1');
+const image2 = document.getElementById('image2');
 const imageWrapper = document.getElementById('image-wrapper');
 const goalScreen = document.getElementById('goal-screen');
-const goalImage = document.getElementById('goal-image'); // これは残しておく
+const goalImage = document.getElementById('goal-image');
 
 const TOTAL_STAGES = 13;
 let currentStage = 1;
 
-// 色のリストを生成
-const colors = [];
-for (let i = 0; i < 26; i++) {
-    colors.push(`hsl(${i * 13}, 100%, 50%)`);
+// 画像のパスを生成
+const images = [];
+for (let i = 1; i <= 26; i++) {
+    images.push(`images/image_${String(i).padStart(2, '0')}.png`);
 }
-const goalColor = 'gold';
+const goalImgSrc = 'images/goal.png';
 
 function startGame() {
     currentStage = 1;
@@ -29,22 +29,22 @@ function updateStage() {
     }
     stageCounter.textContent = `ステージ ${currentStage}`;
 
-    // 現在のステージに基づいて2つのユニークな色をランダムに選択
-    const availableColors = [...colors];
-    const colorIndex1 = Math.floor(Math.random() * availableColors.length);
-    let [color1] = availableColors.splice(colorIndex1, 1);
-    const colorIndex2 = Math.floor(Math.random() * availableColors.length);
-    let [color2] = availableColors.splice(colorIndex2, 1);
+    // 現在のステージに基づいて2つのユニークな画像をランダムに選択
+    const availableImages = [...images];
+    const imageIndex1 = Math.floor(Math.random() * availableImages.length);
+    let [img1Src] = availableImages.splice(imageIndex1, 1);
+    const imageIndex2 = Math.floor(Math.random() * availableImages.length);
+    let [img2Src] = availableImages.splice(imageIndex2, 1);
 
-    choice1.style.backgroundColor = color1;
-    choice2.style.backgroundColor = color2;
+    image1.src = img1Src;
+    image2.src = img2Src;
 
     // 正解をランダムに設定
-    const correctChoice = Math.random() < 0.5 ? choice1 : choice2;
+    const correctImage = Math.random() < 0.5 ? image1 : image2;
 
     // クリックイベントリスナーを一度削除してから再設定
-    choice1.onclick = () => handleChoice(choice1 === correctChoice);
-    choice2.onclick = () => handleChoice(choice2 === correctChoice);
+    image1.onclick = () => handleChoice(image1 === correctImage);
+    image2.onclick = () => handleChoice(image2 === correctImage);
 }
 
 function handleChoice(isCorrect) {
@@ -61,9 +61,7 @@ function showGoal() {
     stageCounter.textContent = 'Congratulations!';
     imageWrapper.style.display = 'none';
     goalScreen.style.display = 'block';
-    // ゴール画像はまだ使わないが、将来のために残しておく
-    // goalImage.src = goalImgSrc;
-    goalScreen.style.backgroundColor = goalColor; // 代わりに背景色を設定
+    goalImage.src = goalImgSrc;
 }
 
 // 初期化

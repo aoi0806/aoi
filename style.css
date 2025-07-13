@@ -30,7 +30,6 @@ body {
 .choice-image {
     width: 45%;
     max-width: 300px;
-    height: 200px; /* 高さを指定 */
     cursor: pointer;
     border: 5px solid transparent;
     transition: border-color 0.3s;
