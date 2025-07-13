@@ -1,1 +1,1 @@
-Implement sequential image loading and add rules section
+Add a sub-page with a right-answer-only version
